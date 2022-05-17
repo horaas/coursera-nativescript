@@ -24,6 +24,14 @@ const routes: Routes = [
     path: 'settings',
     loadChildren: () => import('~/app/settings/settings.module').then((m) => m.SettingsModule),
   },
+  {
+    path: 'about',
+    loadChildren: () => import('~/app/about/about.module').then((m) => m.AboutModule),
+  },
+  {
+    path: 'contactus',
+    loadChildren: () => import('~/app/contactus/contactus.module').then((m) => m.ContactusModule),
+  },
 ]
 
 @NgModule({
