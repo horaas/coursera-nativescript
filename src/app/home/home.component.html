@@ -8,7 +8,10 @@
 </ActionBar>
 
 <GridLayout class="page__content">
-  <Label class="page__content-icon fas" text="&#xf015;"></Label>
+  <Label class="page__content-icon fas" 
+  *ngIf="!showAlertAndroid" text="&#xf015;"></Label>
+  <Image class="page__content-icon" 
+  *ngIf="showAlertAndroid" src="src://home_icon" ></Image>
   <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
   <StackLayout>
     <Label class="content-list-result" *ngFor="let funcionalidad of this.funcionalidades.getFuncionalidades()" [text]="funcionalidad" textWrap="true"></Label>
