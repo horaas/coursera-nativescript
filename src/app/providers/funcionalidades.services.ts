@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 
+// Se hace uso en el componente home
 @Injectable()
 export class FuncionalidadesService {
 

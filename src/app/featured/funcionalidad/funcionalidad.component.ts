@@ -12,7 +12,8 @@ export class FuncionalidadComponent implements OnInit {
 
 	constructor() { }
 
-	ngOnInit() { }
+	ngOnInit() {
+	}
 
 	onDrawerButtonTap(): void {
 		const sideDrawer = <RadSideDrawer>Application.getRootView()

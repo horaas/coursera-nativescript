@@ -10,4 +10,7 @@
 <GridLayout class="page__content">
   <Label class="page__content-icon fas" text="&#xf015;"></Label>
   <Label class="page__content-placeholder" text="<!-- Page content goes here -->"></Label>
+  <StackLayout class="content-list-result">
+    <Label *ngFor="let funcionalidad of this.funcionalidades.getFuncionalidades()" [text]="funcionalidad" textWrap="true"></Label>
+  </StackLayout>
 </GridLayout>
