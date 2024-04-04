@@ -25,6 +25,11 @@ const routes: Routes = [
     loadChildren: () => import('~/app/settings/settings.module').then((m) => m.SettingsModule),
   },
   {
+    path: 'featured/funcionalidad',
+    loadChildren: () => import('~/app/featured/funcionalidad/funcionalidad.module').then((m) => m.FuncionalidadModule)
+  },
+
+  {
     path: 'component-nuevo1',
     loadChildren: () => import('~/app/coursera/coursera.module').then((m) => m.CourseraModule),
   },
@@ -32,10 +37,14 @@ const routes: Routes = [
     path: 'component-nuevo2',
     loadChildren: () => import('~/app/coursera-curso/coursera-curso.module').then((m) => m.CourseraCursoModule),
   },
+  // {
+  //   path: 'funcionalidad',
+  //   loadChildren: () => import('~/app/featured/funcionalidad/funcionalidad-routing.module').then((m) => m.FuncionalidadRoutingModule),
+  // }
 ]
 
 @NgModule({
   imports: [NativeScriptRouterModule.forRoot(routes)],
   exports: [NativeScriptRouterModule],
 })
-export class AppRoutingModule {}
+export class AppRoutingModule { }

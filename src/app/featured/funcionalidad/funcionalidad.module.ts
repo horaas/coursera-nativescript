@@ -3,7 +3,6 @@ import { NativeScriptCommonModule } from '@nativescript/angular'
 import { FuncionalidadRoutingModule } from './funcionalidad-routing.module'
 import { FuncionalidadComponent } from './funcionalidad.component'
 
-
 @NgModule({
   imports: [NativeScriptCommonModule, FuncionalidadRoutingModule],
   declarations: [FuncionalidadComponent],

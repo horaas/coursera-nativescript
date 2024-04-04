@@ -3,8 +3,8 @@ import { Routes } from '@angular/router'
 import { NativeScriptRouterModule } from '@nativescript/angular'
 import { FuncionalidadComponent } from './funcionalidad.component'
 
-
-const routes: Routes = [{ path: '', component: FuncionalidadComponent }]
+const routes: Routes = [{ path: '', component: 
+FuncionalidadComponent }]
 
 @NgModule({
   imports: [NativeScriptRouterModule.forChild(routes)],

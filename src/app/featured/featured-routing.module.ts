@@ -4,7 +4,9 @@ import { NativeScriptRouterModule } from '@nativescript/angular'
 
 import { FeaturedComponent } from './featured.component'
 
-const routes: Routes = [{ path: '', component: FeaturedComponent }]
+const routes: Routes = [
+  { path: '', component: FeaturedComponent }
+]
 
 @NgModule({
   imports: [NativeScriptRouterModule.forChild(routes)],
