@@ -25,12 +25,12 @@ const routes: Routes = [
     loadChildren: () => import('~/app/settings/settings.module').then((m) => m.SettingsModule),
   },
   {
-    path: 'about',
-    loadChildren: () => import('~/app/about/about.module').then((m) => m.AboutModule),
+    path: 'component-nuevo1',
+    loadChildren: () => import('~/app/coursera/coursera.module').then((m) => m.CourseraModule),
   },
   {
-    path: 'contactus',
-    loadChildren: () => import('~/app/contactus/contactus.module').then((m) => m.ContactusModule),
+    path: 'component-nuevo2',
+    loadChildren: () => import('~/app/coursera-curso/coursera-curso.module').then((m) => m.CourseraCursoModule),
   },
 ]
 

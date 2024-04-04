@@ -1,13 +1,13 @@
 import { NgModule } from '@angular/core'
 import { Routes } from '@angular/router'
 import { NativeScriptRouterModule } from '@nativescript/angular'
+import { CourseraCursoComponent } from './coursera-curso.component'
 
-import { FeaturedComponent } from './featured.component'
-
-const routes: Routes = [{ path: '', component: FeaturedComponent }]
+const routes: Routes = [{ path: '', component: 
+CourseraCursoComponent }]
 
 @NgModule({
   imports: [NativeScriptRouterModule.forChild(routes)],
   exports: [NativeScriptRouterModule],
 })
-export class FeaturedRoutingModule {}
+export class CourseraCursoRoutingModule {}
