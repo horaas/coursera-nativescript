@@ -16,11 +16,9 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.funcionalidades.setFuncionalidades('home')
-    this.funcionalidades.setFuncionalidades('browser')
-    this.funcionalidades.setFuncionalidades('search')
-    this.funcionalidades.setFuncionalidades('featured')
-    this.funcionalidades.setFuncionalidades('about')
+    this.funcionalidades.setFuncionalidades('guia')
+    this.funcionalidades.setFuncionalidades('lugares')
+    this.funcionalidades.setFuncionalidades('sugerencias')
   }
 
   onDrawerButtonTap(): void {
@@ -29,11 +27,13 @@ export class ListComponent implements OnInit {
   }
 
 
-  onNavItemTap(navItemRoute: string): void {
+  onNavItemTap(navItemRoute: string, data: any): void {
     this.routerExtensions.navigate([navItemRoute], {
       transition: {
         name: 'fade',
       },
+      state: {filter: this.funcionalidades.getFuncionalidades()[data.index]}
     })
   }
+
 }

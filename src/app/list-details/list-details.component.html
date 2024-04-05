@@ -6,5 +6,13 @@
     <Label class="fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
   </GridLayout>
 </ActionBar>
-
-
+<PullToRefresh (refresh)="refreshList($event)">
+  <ListView class="list-group" [items]="filterData">
+    <ng-template let-list="item">
+      <FlexboxLayout>
+        <Image class="thumb img-circle" src="res://funcionalidad"></Image>
+        <Label class="list-group-item-heading" text="{{list}}" verticalAligment="center"></Label>
+      </FlexboxLayout>
+    </ng-template>
+  </ListView>
+</PullToRefresh>
