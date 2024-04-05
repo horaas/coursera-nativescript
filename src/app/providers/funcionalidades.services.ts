@@ -13,4 +13,9 @@ export class FuncionalidadesService {
     getFuncionalidades(): Array<String> {
         return this.funcionalidades;
     }
+    getItemTest() {
+        return Array.from({ length: 100 }).map((_, i) => ({
+            title: `Item ${i}`,
+          }))
+    }
 }

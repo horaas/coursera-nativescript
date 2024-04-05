@@ -1,13 +1,13 @@
 import { Component, OnInit } from '@angular/core'
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
 import { Application } from '@nativescript/core'
-import { FuncionalidadesService } from '../providers/funcionalidades.services'
+
 
 @Component({
-  selector: 'Home',
-  templateUrl: './home.component.html'
+  selector: 'List',
+  templateUrl: './list-details.component.html',
 })
-export class HomeComponent implements OnInit {
+export class ListDetalisComponent implements OnInit {
   constructor() {
     // Use the component constructor to inject providers.
   }
@@ -20,4 +20,5 @@ export class HomeComponent implements OnInit {
     const sideDrawer = <RadSideDrawer>Application.getRootView()
     sideDrawer.showDrawer()
   }
+
 }

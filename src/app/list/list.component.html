@@ -1,0 +1,19 @@
+<ActionBar class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <GridLayout columns="50, *">
+    <Label class="action-bar-title" text="List component" colSpan="2"></Label>
+
+    <Label class="fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+  </GridLayout>
+</ActionBar>
+
+<ListView class="list-group" [items]="funcionalidades.getFuncionalidades()" (itemTap)="onNavItemTap('/list-details')">
+  <ng-template let-nameFuncionalidad="item">
+    <FlexboxLayout>
+        <Image class="thumb img-circle" src="res://funcionalidad"></Image>
+        <Label class="list-group-item-heading" text="{{nameFuncionalidad}}" verticalAligment="center"></Label>  
+    </FlexboxLayout>
+  </ng-template>
+  
+</ListView>
+
