@@ -10,6 +10,8 @@ import { RouterExtensions } from '@nativescript/angular'
   styleUrls: ['list.component.scss']
 })
 export class ListComponent implements OnInit {
+
+  resultData: Array<string>
   constructor(public funcionalidades: FuncionalidadesService, private routerExtensions: RouterExtensions) {
     // Use the component constructor to inject providers.
 
@@ -19,6 +21,7 @@ export class ListComponent implements OnInit {
     this.funcionalidades.setFuncionalidades('guia')
     this.funcionalidades.setFuncionalidades('lugares')
     this.funcionalidades.setFuncionalidades('sugerencias')
+    this.searchNow()
   }
 
   onDrawerButtonTap(): void {
@@ -36,4 +39,12 @@ export class ListComponent implements OnInit {
     })
   }
 
+  searchNow(dataSearch?:string ): void {
+    console.dir(dataSearch)
+    if (dataSearch) {
+      this.resultData = this.funcionalidades.getFuncionalidades().filter((data) => data.indexOf(dataSearch) >= 0)
+      return;
+    }
+    this.resultData = this.funcionalidades.getFuncionalidades()
+  }
 }

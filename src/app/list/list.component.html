@@ -7,14 +7,15 @@
   </GridLayout>
 </ActionBar>
 
-
-<ListView class="list-group" [items]="funcionalidades.getFuncionalidades()"
-  (itemTap)="onNavItemTap('/list-details', $event)">
-  <ng-template let-nameFuncionalidad="item">
-    <FlexboxLayout>
-      <Image class="thumb img-circle" src="res://funcionalidad"></Image>
-      <Label class="list-group-item-heading" text="{{nameFuncionalidad}}" verticalAligment="center"></Label>
-    </FlexboxLayout>
-  </ng-template>
-
-</ListView>
+<StackLayout>
+  <search-form (search)="searchNow($event)"></search-form>
+  <ListView class="list-group" [items]="resultData"
+    (itemTap)="onNavItemTap('/list-details', $event)">
+    <ng-template let-nameFuncionalidad="item">
+      <FlexboxLayout>
+        <Image class="thumb img-circle" src="res://funcionalidad"></Image>
+        <Label class="list-group-item-heading" text="{{nameFuncionalidad}}" verticalAligment="center"></Label>
+      </FlexboxLayout>
+    </ng-template>
+  </ListView>
+</StackLayout>

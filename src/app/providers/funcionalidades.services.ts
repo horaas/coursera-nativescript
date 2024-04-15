@@ -3,14 +3,14 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class FuncionalidadesService {
 
-    private funcionalidades: Array<String> = [];
+    private funcionalidades: Array<string> = [];
     constructor() { }
     
-    setFuncionalidades(data: String) {
+    setFuncionalidades(data: string) {
         this.funcionalidades.push(data)
     }
 
-    getFuncionalidades(): Array<String> {
+    getFuncionalidades(): Array<string> {
         return this.funcionalidades;
     }
     getItemTest() {
