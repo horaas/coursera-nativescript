@@ -1,6 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
-import { Application, Color, View } from '@nativescript/core'
+import { ActivityIndicator, Application, Color, View } from '@nativescript/core'
 import { FuncionalidadesService } from '../providers/funcionalidades.services'
 import { RouterExtensions } from '@nativescript/angular'
 
@@ -60,5 +60,11 @@ export class ListComponent implements OnInit {
       return;
     }
     this.resultData = this.funcionalidades.getFuncionalidades()
+  }
+  
+
+  cambio(event) {
+    let indicator = <ActivityIndicator>event.object;
+    console.log("indicator.busy: " + indicator.busy);
   }
 }
