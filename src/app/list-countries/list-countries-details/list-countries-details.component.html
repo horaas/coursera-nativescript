@@ -1,0 +1,14 @@
+<ActionBar class="action-bar">
+    <NavigationButton visibility="hidden"></NavigationButton>
+    <GridLayout columns="50, *">
+        <Label class="action-bar-title" text="{{country.name}}" colSpan="2"></Label>
+
+        <Label class="fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+    </GridLayout>
+</ActionBar>
+
+<StackLayout>
+    <Label class="label-description title-country" text="{{country.name}}" textWrap="true" ></Label>
+    <Label class="label-description" text="Capital: {{country.capital}}" textWrap="true" ></Label>
+    <Label class="label-description" text="Detalle: {{country.description}}" textWrap="true" ></Label>
+</StackLayout>

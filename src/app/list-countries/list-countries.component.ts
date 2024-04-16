@@ -1,4 +1,5 @@
 import { Component, OnInit } from "@angular/core";
+import { RouterExtensions } from "@nativescript/angular";
 import { Application } from "@nativescript/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
 
@@ -11,52 +12,52 @@ export class ListcountriesComponent implements OnInit {
     listCountries = [
         {
             name: 'Colombia',
-            description: '',
-            capital: ''
+            description: 'descripción de Colombia',
+            capital: 'Bógota'
         },
         {
             name: 'Venezuela',
-            description: '',
-            capital: ''
+            description: 'descripción de Venezuela',
+            capital: 'Caracas'
         },
         {
             name: 'Argentina',
-            description: '',
-            capital: ''
+            description: 'descripción de Argentina',
+            capital: 'Buenos Aires'
         },
         {
             name: 'Perú',
-            description: '',
-            capital: ''
+            description: 'descripción de Perú',
+            capital: 'Lima'
         },
         {
             name: 'Mexico',
-            description: '',
-            capital: ''
+            description: 'descripción de Mexico',
+            capital: 'Ciudad de Mexico'
         },
         {
             name: 'Estados Unidos',
-            description: '',
-            capital: ''
+            description: 'descripción de Estados Unidos',
+            capital: 'Washington'
         },
         {
             name: 'Dinamarca',
-            description: '',
-            capital: ''
+            description: 'descripción de Dinamarca',
+            capital: 'Copenhague'
         },
         {
             name: 'España',
-            description: '',
-            capital: ''
+            description: 'descripción de España',
+            capital: 'Madrid'
         },
         {
             name: 'Chile',
-            description: '',
-            capital: ''
+            description: 'descripción de Chile',
+            capital: 'Snatiago de Chile'
         }
     ]
 
-    constructor() {
+    constructor(private routerExtensions: RouterExtensions) {
     }
 
     ngOnInit(): void {
@@ -66,4 +67,13 @@ export class ListcountriesComponent implements OnInit {
         const sideDrawer = <RadSideDrawer>Application.getRootView()
         sideDrawer.showDrawer()
     }
+
+    onNavItemTap(navItemRoute: string, data: any): void {
+        this.routerExtensions.navigate([navItemRoute], {
+          transition: {
+            name: 'fade',
+          },
+          state: {country: this.listCountries[data.index]}
+        })
+      }
 }

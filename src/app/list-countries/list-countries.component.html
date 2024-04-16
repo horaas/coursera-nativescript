@@ -8,7 +8,7 @@
 </ActionBar>
 
 <StackLayout>
-    <ListView class="list-group" [items]="listCountries">
+    <ListView class="list-group" [items]="listCountries" (itemTap)="onNavItemTap('/list-countries/details', $event)">
         <ng-template let-nameCountry="item">
             <FlexboxLayout>
                 <Label class="fas" text="&#xf57d;" textWrap="true"></Label>
