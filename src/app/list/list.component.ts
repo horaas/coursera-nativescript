@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core'
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
-import { Application } from '@nativescript/core'
+import { Application, Color, View } from '@nativescript/core'
 import { FuncionalidadesService } from '../providers/funcionalidades.services'
 import { RouterExtensions } from '@nativescript/angular'
 
@@ -10,6 +10,8 @@ import { RouterExtensions } from '@nativescript/angular'
   styleUrls: ['list.component.scss']
 })
 export class ListComponent implements OnInit {
+
+  @ViewChild('layout') layout: ElementRef;
 
   resultData: Array<string>
   constructor(public funcionalidades: FuncionalidadesService, private routerExtensions: RouterExtensions) {
@@ -35,14 +37,26 @@ export class ListComponent implements OnInit {
       transition: {
         name: 'fade',
       },
-      state: {filter: this.funcionalidades.getFuncionalidades()[data.index]}
+      state: { filter: this.funcionalidades.getFuncionalidades()[data.index] }
     })
   }
 
-  searchNow(dataSearch?:string ): void {
+  searchNow(dataSearch?: string): void {
     console.dir(dataSearch)
     if (dataSearch) {
       this.resultData = this.funcionalidades.getFuncionalidades().filter((data) => data.indexOf(dataSearch) >= 0)
+      const layout = <View>this.layout.nativeElement
+      layout.animate({
+        backgroundColor: new Color('blue'),
+        duration: 3000,
+        delay: 1500
+      }).then(() => {
+        layout.animate({
+          backgroundColor: new Color('black'),
+          duration: 3000,
+          delay: 1500
+        })
+      })
       return;
     }
     this.resultData = this.funcionalidades.getFuncionalidades()

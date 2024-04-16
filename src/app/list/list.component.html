@@ -7,7 +7,7 @@
   </GridLayout>
 </ActionBar>
 
-<StackLayout>
+<StackLayout #layout>
   <search-form (search)="searchNow($event)"></search-form>
   <ListView class="list-group" [items]="resultData"
     (itemTap)="onNavItemTap('/list-details', $event)">
