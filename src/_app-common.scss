@@ -20,8 +20,13 @@
   font-weight: 400;
 }
 
+TextField {
+  color: black;
+}
 // Common page class
 .page__content {
+  background-color: white;
+  color: #808080;
   &-icon,
   &-placeholder {
     color: const(grey);
@@ -40,4 +45,20 @@
 // Drawer navigation custom styles
 .nt-drawer__header-image {
   color: const(grey);
+}
+
+Button,
+Label {
+  &.btn-circle {
+    height: 40;
+    width: 40;
+    border-radius: 40;
+    background: #00ffff;
+    font-size: 13;
+    color: #808080;
+    padding: 0;
+    vertical-align: middle;
+    text-align: center;
+    display: flex;
+  }
 }
