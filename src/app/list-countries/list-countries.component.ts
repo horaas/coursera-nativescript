@@ -2,7 +2,9 @@ import { Component, OnInit } from "@angular/core";
 import { RouterExtensions } from "@nativescript/angular";
 import { Application } from "@nativescript/core";
 import { RadSideDrawer } from "nativescript-ui-sidedrawer";
-
+import { registerElement } from '@nativescript/angular';
+import { PullToRefresh } from '@nativescript-community/ui-pulltorefresh';
+registerElement('PullToRefresh', () => PullToRefresh);
 @Component({
     selector: "list-countries",
     templateUrl: "./list-countries.component.html",
@@ -57,6 +59,7 @@ export class ListcountriesComponent implements OnInit {
         }
     ]
 
+    listCountriesfilterResult = []
     constructor(private routerExtensions: RouterExtensions) {
     }
 
@@ -69,11 +72,30 @@ export class ListcountriesComponent implements OnInit {
     }
 
     onNavItemTap(navItemRoute: string, data: any): void {
+        const dataSend = this.listCountriesfilterResult.length !== 0 ? this.listCountriesfilterResult : this.listCountries
         this.routerExtensions.navigate([navItemRoute], {
-          transition: {
-            name: 'fade',
-          },
-          state: {country: this.listCountries[data.index]}
+            transition: {
+                name: 'fade',
+            },
+            state: { country: dataSend[data.index] }
         })
-      }
+    }
+
+    refreshList(args) {
+        const pullRefresh = args.object;
+        const count = (this.listCountries.length + 1)
+        setTimeout(() => {
+            this.listCountries.push({
+                name: 'país nuevo ' + count,
+                description: 'decription país nuevo ' + count,
+                capital: 'capital nuevo ' + count
+            })
+            pullRefresh.refreshing = false;
+            this.fileterDataResult()
+        }, 1000);
+    }
+
+    fileterDataResult(resultData: string = '') {
+        this.listCountriesfilterResult = this.listCountries.filter((data) => data.name.toLocaleLowerCase().indexOf(resultData.toLocaleLowerCase()) >= 0)
+    }
 }

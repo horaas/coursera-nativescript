@@ -7,8 +7,17 @@
     </GridLayout>
 </ActionBar>
 
-<StackLayout>
-    <Label class="label-description title-country" text="{{country.name}}" textWrap="true" ></Label>
-    <Label class="label-description" text="Capital: {{country.capital}}" textWrap="true" ></Label>
-    <Label class="label-description" text="Detalle: {{country.description}}" textWrap="true" ></Label>
+<StackLayout class="page__content">
+    <GridLayout rows="auto" columns="auto, *">
+        <Label class="label-description" text="Capital: {{country.capital}}" textWrap="true" row="0"
+            col="0"></Label>
+        <Button class="fas btn-circle" text="&#xf1f8;" row="0" col="1"
+        (longPress)="handleRemoveCountry()"></Button>
+    </GridLayout>
+    <GridLayout rows="auto" columns="auto, *">
+        <Button class="fas btn-circle" text="&#xf044;" row="0" col="0"
+        (tap)="handleEditDescription()"></Button>
+        <Label class="label-description" text="Detalle:{{'\n' + country.description}}" textWrap="true" row="0"
+            col="1"></Label>
+    </GridLayout>
 </StackLayout>

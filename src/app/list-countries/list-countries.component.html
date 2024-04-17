@@ -7,17 +7,19 @@
     </GridLayout>
 </ActionBar>
 
-<StackLayout>
-    <ListView class="list-group" [items]="listCountries" (itemTap)="onNavItemTap('/list-countries/details', $event)">
-        <ng-template let-nameCountry="item">
-            <FlexboxLayout>
-                <Label class="fas" text="&#xf57d;" textWrap="true"></Label>
-                <Label class="list-group-item-heading" text="{{nameCountry.name}}" verticalAligment="center"></Label>
-            </FlexboxLayout>
-        </ng-template>
-    </ListView>
-</StackLayout>
-
-<FlexboxLayout>
-
-</FlexboxLayout>
+<GridLayout class="page__content" rows="auto, *" columns="*">
+    
+    <form-search row="0" col="0" (searchResult)="fileterDataResult($event)"></form-search>
+    <PullToRefresh row="1" col="0" (refresh)="refreshList($event)">
+        <ListView class="list-group" [items]="listCountriesfilterResult.length !== 0 ? listCountriesfilterResult : listCountries"
+            (itemTap)="onNavItemTap('/list-countries/details', $event)">
+            <ng-template let-nameCountry="item">
+                <FlexboxLayout>
+                    <Label class="fas" text="&#xf57d;" textWrap="true"></Label>
+                    <Label class="list-group-item-heading" text="{{nameCountry.name}}"
+                        verticalAligment="center"></Label>
+                </FlexboxLayout>
+            </ng-template>
+        </ListView>
+    </PullToRefresh>
+</GridLayout>

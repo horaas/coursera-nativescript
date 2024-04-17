@@ -1,0 +1,11 @@
+<GridLayout rows="*" columns="*, auto">
+    <TextField row="0" col="0" hint="Buscar"
+    (textChange)="handleSearch($event.value, true)"
+    [(ngModel)]="textfielValue"></TextField>
+    <Button row="0" col="1" class="nt-icon fas btn-circle" text="&#xf002;"
+    (tap)="handleSearch(textfielValue)" #buttonSearch></Button>
+    <!-- <Button row="0" col="1" class="fas btn-circle" text="&#xf251;" #iconSearch></Button> -->
+    <!-- <Button row="0" col="1" class="nt-icon fas btn-circle" text="&#xf252;" textWrap="true" #iconSearch></Button>
+    <Button row="0" col="1" class="nt-icon fas btn-circle" text="&#xf253;" textWrap="true" #iconSearch></Label> -->
+    
+</GridLayout>

@@ -1,8 +1,9 @@
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android" android:gravity="fill">
-    <item>
-        <bitmap android:gravity="fill" android:src="@drawable/background" />
-    </item>
-    <item>
+    <item android:drawable="@drawable/gradient_background" />
+    <item
+        android:layout_width="wrap_content"
+        android:left="40dp"
+        android:right="40dp">
         <bitmap android:gravity="center" android:src="@drawable/logo" />
     </item>
 </layer-list>
