@@ -5,7 +5,7 @@ import { getJSON, request } from "@nativescript/core/http"
 export class NewsService {
     api: string = 'https://driving-liger-usefully.ngrok-free.app/'
 
-    add(data: string) {
+    add(newId:number, newStatus: boolean) {
         return request({
             url: this.api + 'favs',
             method: 'POST',
@@ -14,7 +14,8 @@ export class NewsService {
             },
             content: JSON.stringify(
                 {
-                    nuevo: data || ''
+                    newId: newId,
+                    newStatus: newStatus
                 }
             )
         })

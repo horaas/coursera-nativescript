@@ -4,4 +4,14 @@
 
 ListView {
     height: 100%;
+    .btn-favorite {
+        font-size: 15;
+        padding: 0;
+        width: 30;
+        height: 30;
+        border-radius: 20;
+        background-color: #00ffff;
+        color: black;
+        box-shadow: 0 0 3 #00ffff
+    }
 }

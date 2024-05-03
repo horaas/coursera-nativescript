@@ -16,6 +16,7 @@ export class ListComponent implements OnInit {
   @ViewChild('layout') layout: ElementRef;
 
   resultData: string[] = []
+  showActivityIndicator = true
   constructor(public funcionalidades: FuncionalidadesService, private routerExtensions: RouterExtensions,
     private newService: NewsService
   ) {
@@ -43,9 +44,24 @@ export class ListComponent implements OnInit {
   }
 
   searchNow(dataSearch?: string): void {
+    this.showActivityIndicator = true
     this.newService.handleSearch(dataSearch).then((result: string[]) => {
       this.resultData = result
+      this.showActivityIndicator = false
     }).catch(() => {
+      this.showActivityIndicator = false
+      Toast.makeText("Error en la busqueda", 'long').show()
+    })
+  }
+  handleAddFavorite(resultDataSelected) {
+    this.showActivityIndicator = true
+    this.newService.add(resultDataSelected.id, !resultDataSelected.isFavSelect).then(() => {
+      resultDataSelected.isFavSelect = !resultDataSelected.isFavSelect
+      this.showActivityIndicator = false
+      Toast.makeText("Se actualizo correctamente", 'long').show()
+    })
+    .catch(() => {
+      this.showActivityIndicator = false
       Toast.makeText("Error en la busqueda", 'long').show()
     })
   }
