@@ -3,7 +3,7 @@ import { Routes } from '@angular/router'
 import { NativeScriptRouterModule } from '@nativescript/angular'
 
 const routes: Routes = [
-  { path: '', redirectTo: '/list', pathMatch: 'full' },
+  { path: '', redirectTo: '/list-favorites', pathMatch: 'full' },
   {
     path: 'home',
     loadChildren: () => import('~/app/home/home.module').then((m) => m.HomeModule),
@@ -31,6 +31,10 @@ const routes: Routes = [
   {
     path: 'list-details',
     loadChildren: () => import('~/app/List-details/List-details.module').then((m) => m.ListDetailsModule),
+  },
+  {
+    path: 'list-favorites',
+    loadChildren: () => import('~/app/favorites/favorites.module').then((m) => m.FavoritesModule),
   }
 ]
 
