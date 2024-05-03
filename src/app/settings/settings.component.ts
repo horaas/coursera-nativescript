@@ -1,30 +1,23 @@
 import { Component, OnInit } from '@angular/core'
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
-import { Application } from '@nativescript/core'
+import { Application, ApplicationSettings } from '@nativescript/core'
 
 import * as dialog from '@nativescript/core/ui/dialogs'
 import * as Toast from 'nativescript-toast'
+import { RouterExtensions } from '@nativescript/angular'
 @Component({
   selector: 'Settings',
   templateUrl: './settings.component.html',
+  styleUrls: ['./settings.component.scss']
 })
 export class SettingsComponent implements OnInit {
-  constructor() {
+
+  userNameValue: string = ''
+  constructor(private routerExtensions: RouterExtensions) {
     // Use the component constructor to inject providers.
   }
 
   ngOnInit(): void {
-    this.doLater(() => {
-      // dialog.action('prueba', 'cancelar', [
-      //   'opcion 1',
-      //   'opcion 2'
-      // ]).then((option) => {
-      //   console.error(option)
-      // })
-      // const tosttest: Toast.ToastOption = {text: 'hello', duration: Toast.duration.long}
-      const toast = Toast.makeText("Hello World", 'long');
-      toast.show()
-    })
   }
 
   onDrawerButtonTap(): void {
@@ -32,5 +25,20 @@ export class SettingsComponent implements OnInit {
     sideDrawer.showDrawer()
   }
 
-  doLater(fn) {setTimeout(fn, 2000);}
+
+  handleSaveNameUser(userName: string) {
+    if (userName && userName.trim()) {
+      dialog.confirm(`¿Esta seguro de actualizar el nombre de usuario a ${userName}?`).then((resultBtn) => {
+        if (resultBtn) {
+          ApplicationSettings.setString('userName', userName)
+          const toast = Toast.makeText(`El nombre ${userName} fue actualizado con exito`, 'long');
+          
+          this.routerExtensions.navigate(['/']).then(() => toast.show())
+        }
+      })
+      return
+    }
+    dialog.alert('Ingrese un valor en el campo')
+
+  }
 }

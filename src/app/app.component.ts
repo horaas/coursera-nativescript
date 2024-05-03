@@ -7,7 +7,7 @@ import {
   SlideInOnTopTransition,
 } from 'nativescript-ui-sidedrawer'
 import { filter } from 'rxjs/operators'
-import { Application } from '@nativescript/core'
+import { Application, ApplicationSettings } from '@nativescript/core'
 
 @Component({
   selector: 'ns-app',
@@ -16,7 +16,7 @@ import { Application } from '@nativescript/core'
 export class AppComponent implements OnInit {
   private _activatedUrl: string
   private _sideDrawerTransition: DrawerTransitionBase
-
+  userName: string = ''
   constructor(private router: Router, private routerExtensions: RouterExtensions) {
     // Use the component constructor to inject services.
   }
@@ -27,7 +27,12 @@ export class AppComponent implements OnInit {
 
     this.router.events
       .pipe(filter((event: any) => event instanceof NavigationEnd))
-      .subscribe((event: NavigationEnd) => (this._activatedUrl = event.urlAfterRedirects))
+      .subscribe((event: NavigationEnd) => {
+        this._activatedUrl = event.urlAfterRedirects
+        this.userName = ApplicationSettings.getString('userName') || 'sin Nombre'
+      })
+
+      
   }
 
   get sideDrawerTransition(): DrawerTransitionBase {

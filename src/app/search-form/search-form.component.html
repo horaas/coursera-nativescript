@@ -1,7 +1,10 @@
+
 <FlexboxLayout flexDirection="row">
-    <TextField #text="ngModel" [(ngModel)]="textfielValue" hint="..enter Text" minlen="3" required></TextField>
-    <Label *ngIf="text.hasError('required')" text="*"></Label> 
+    <GridLayout rows="auto" columns="*, auto">
+        <TextField row="0" col="0" #text="ngModel" [(ngModel)]="textfielValue" hint="Ingrese el texto..." minlen="3" required></TextField>
+        <Label row="0" col="1" *ngIf="text.hasError('required')" text="*"></Label> 
+    </GridLayout>
     <Label *ngIf="!text.hasError('required') && text.hasError('minlen')" text="4+"> </Label>
 </FlexboxLayout>
 
-<Button text="Search" (tap)="onButtontap()"></Button>
+<Button text="Filtrar" (tap)="onButtontap()"></Button>
