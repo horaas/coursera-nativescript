@@ -3,6 +3,8 @@ import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
 import { ActivityIndicator, Application, Color, View } from '@nativescript/core'
 import { FuncionalidadesService } from '../providers/funcionalidades.services'
 import { RouterExtensions } from '@nativescript/angular'
+import { NewsService } from '../providers/news.service'
+import * as Toast from 'nativescript-toast'
 
 @Component({
   selector: 'List',
@@ -13,16 +15,15 @@ export class ListComponent implements OnInit {
 
   @ViewChild('layout') layout: ElementRef;
 
-  resultData: Array<string>
-  constructor(public funcionalidades: FuncionalidadesService, private routerExtensions: RouterExtensions) {
+  resultData: string[] = []
+  constructor(public funcionalidades: FuncionalidadesService, private routerExtensions: RouterExtensions,
+    private newService: NewsService
+  ) {
     // Use the component constructor to inject providers.
 
   }
 
   ngOnInit(): void {
-    this.funcionalidades.setFuncionalidades('guia')
-    this.funcionalidades.setFuncionalidades('lugares')
-    this.funcionalidades.setFuncionalidades('sugerencias')
     this.searchNow()
   }
 
@@ -42,29 +43,10 @@ export class ListComponent implements OnInit {
   }
 
   searchNow(dataSearch?: string): void {
-    console.dir(dataSearch)
-    if (dataSearch) {
-      this.resultData = this.funcionalidades.getFuncionalidades().filter((data) => data.indexOf(dataSearch) >= 0)
-      const layout = <View>this.layout.nativeElement
-      layout.animate({
-        backgroundColor: new Color('blue'),
-        duration: 3000,
-        delay: 1500
-      }).then(() => {
-        layout.animate({
-          backgroundColor: new Color('black'),
-          duration: 3000,
-          delay: 1500
-        })
-      })
-      return;
-    }
-    this.resultData = this.funcionalidades.getFuncionalidades()
-  }
-  
-
-  cambio(event) {
-    let indicator = <ActivityIndicator>event.object;
-    console.log("indicator.busy: " + indicator.busy);
+    this.newService.handleSearch(dataSearch).then((result: string[]) => {
+      this.resultData = result
+    }).catch(() => {
+      Toast.makeText("Error en la busqueda", 'long').show()
+    })
   }
 }

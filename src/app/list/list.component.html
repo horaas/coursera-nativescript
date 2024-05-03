@@ -1,7 +1,7 @@
 <ActionBar class="action-bar">
   <NavigationButton visibility="hidden"></NavigationButton>
   <GridLayout columns="50, *">
-    <Label class="action-bar-title" text="List component" colSpan="2"></Label>
+    <Label class="action-bar-title" text="Noticias" colSpan="2"></Label>
 
     <Label class="fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
   </GridLayout>
@@ -18,10 +18,7 @@
     </ng-template>
   </ListView>
 
-  <Button text="Tocar!" (tap)="(activityIndicator.busy =
-!activityIndicator.busy)" class="btn btn-primary btn-active">
-  </Button>
-  <ActivityIndicator #activityIndicator busy="true" (busyChange)="cambio($event)" width="100" height="100"
-    class="activity-indicator">
-  </ActivityIndicator>
 </StackLayout>
+
+<ActivityIndicator #activityIndicator [busy]="resultData.length === 0" width="100" height="100" class="activity-indicator">
+</ActivityIndicator>
