@@ -23,7 +23,7 @@ export class FavoritesComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.searchNow()
+    this.searchNowFavorites()
   }
 
   onDrawerButtonTap(): void {
@@ -37,28 +37,16 @@ export class FavoritesComponent implements OnInit {
       transition: {
         name: 'fade',
       },
-      state: { filter: this.funcionalidades.getFuncionalidades()[data.index] }
+      state: { filter: data }
     })
   }
 
-  searchNow(dataSearch?: string): void {
+  searchNowFavorites(dataSearch?: string): void {
     this.showActivityIndicator = true
-    this.newService.handleSearch(dataSearch).then((result: string[]) => {
-      this.resultData = result
+    this.newService.handleSearch(dataSearch).then((result: any[]) => {
+      this.resultData = result.filter((data) => data.isFavSelect)
       this.showActivityIndicator = false
     }).catch(() => {
-      this.showActivityIndicator = false
-      Toast.makeText("Error en la busqueda", 'long').show()
-    })
-  }
-  handleAddFavorite(resultDataSelected) {
-    this.showActivityIndicator = true
-    this.newService.add(resultDataSelected.id, !resultDataSelected.isFavSelect).then(() => {
-      resultDataSelected.isFavSelect = !resultDataSelected.isFavSelect
-      this.showActivityIndicator = false
-      Toast.makeText("Se actualizo correctamente", 'long').show()
-    })
-    .catch(() => {
       this.showActivityIndicator = false
       Toast.makeText("Error en la busqueda", 'long').show()
     })

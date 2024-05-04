@@ -1,0 +1,16 @@
+<ActionBar class="action-bar">
+  <NavigationButton visibility="hidden"></NavigationButton>
+  <GridLayout columns="50, *">
+    <Label class="action-bar-title" text="{{optionFilter.title}}" colSpan="2"></Label>
+    <Label class="fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+  </GridLayout>
+</ActionBar>
+<StackLayout class="container-news">
+  <Label class="title-news" text="{{optionFilter.title}}" textWrap="true"></Label>
+  <StackLayout class="container-public">
+    <Label class="name-reporter-news"text="{{optionFilter.nameReporter}}" textWrap="true" ></Label>
+    <Label class="date-news"text="{{optionFilter.date}}" textWrap="true" ></Label>
+  </StackLayout>
+  <Label class="detail-news"text="Detalle de la noticia: {{optionFilter.description}}" textWrap="true" ></Label>
+  
+</StackLayout>
