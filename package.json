@@ -3,7 +3,6 @@
   "main": "src/main.ts",
   "version": "1.0.0",
   "private": true,
-
   "scripts": {
     "postinstall": "node npm/post-install.js"
   },
@@ -20,6 +19,8 @@
     "@nativescript/angular": "^13.0.0",
     "@nativescript/core": "~8.2.0",
     "@nativescript/theme": "~3.0.2",
+    "@ngrx/effects": "^13.2.0",
+    "@ngrx/store": "^13.2.0",
     "adb-wifi": "^0.1.2",
     "nativescript-toast": "^2.0.0",
     "nativescript-ui-sidedrawer": "~10.0.2",

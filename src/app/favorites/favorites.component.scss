@@ -2,15 +2,28 @@
     border-radius: 50%;
 }
 
-ListView {
-    height: 100%;
-    .btn-favorite {
-        padding: 5;
-        font-size: 15;
-        height: 30;
-        border-radius: 20;
-        background-color: #00ffff;
+.container-news {
+    background-color: white;
+    .label-header-news {
         color: black;
-        box-shadow: 0 0 3 #00ffff
+        font-size: 20;
+        padding: 10;
+        font-weight: bold;
+        box-shadow: 0 0 2 black;
+        margin: 10;
+        margin-top: 0;
+    }
+    ListView {
+        color: black;
+        height: 100%;
+        .btn-favorite {
+            padding: 5;
+            font-size: 15;
+            height: 30;
+            border-radius: 20;
+            background-color: #00ffff;
+            color: black;
+            box-shadow: 0 0 3 #00ffff
+        }
     }
 }

@@ -5,6 +5,9 @@ import { FuncionalidadesService } from '../providers/funcionalidades.services'
 import { RouterExtensions } from '@nativescript/angular'
 import { NewsService } from '../providers/news.service'
 import * as Toast from 'nativescript-toast'
+import { Store } from '@ngrx/store'
+import { AppState } from '../app.module'
+import { NewsDataModelInterface } from './news-state.model'
 
 @Component({
   selector: 'Favorites',
@@ -13,17 +16,22 @@ import * as Toast from 'nativescript-toast'
 })
 export class FavoritesComponent implements OnInit {
 
-  @ViewChild('layout') layout: ElementRef;
-
   resultData: string[] = []
   showActivityIndicator = true
+  moreNewsRead = []
 
   constructor(public funcionalidades: FuncionalidadesService, private routerExtensions: RouterExtensions,
-    private newService: NewsService
+    private newService: NewsService,
+    private store: Store<AppState>
   ) {}
 
   ngOnInit(): void {
     this.searchNowFavorites()
+    this.store.select((state) => state.lasReadNews.lastsRead).subscribe({
+      next: (data) => {
+        this.moreNewsRead = data
+      }
+    })
   }
 
   onDrawerButtonTap(): void {
@@ -32,7 +40,7 @@ export class FavoritesComponent implements OnInit {
   }
 
 
-  onNavItemTap(navItemRoute: string, data: any): void {
+  onNavItemTap(navItemRoute: string, data: NewsDataModelInterface): void {
     this.routerExtensions.navigate([navItemRoute], {
       transition: {
         name: 'fade',

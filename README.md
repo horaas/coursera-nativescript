@@ -10,4 +10,7 @@
 
 adb pair ip:port
 adb -s devicename disconnect
+
+npm i --save --force @ngrx/effects@13
+npm i --save --force @ngrx/store@13
  ```

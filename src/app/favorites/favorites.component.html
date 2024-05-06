@@ -7,17 +7,38 @@
   </GridLayout>
 </ActionBar>
 
-<StackLayout #layout>
-  <ListView class="list-group" [items]="resultData">
-    <ng-template let-nameNew="item">
-      <GridLayout rows="auto" columns="auto, *, auto">
-        <Image row="0" col="0" class="thumb img-circle" src="res://funcionalidad"></Image>
-        <Label row="0" col="1" class="list-group-item-heading" text="{{nameNew.title}}" verticalAligment="center"></Label>
-        <Button row="0" col="2" class="btn-favorite far" text="Leer más.."></Button>
-      </GridLayout>
-    </ng-template>
-  </ListView>
+<GridLayout class="container-news" rows="*, *" columns="*">
+  <StackLayout row="0" col="0" *ngIf="moreNewsRead.length !== 0">
+    <Label class="label-header-news" row="1" col="0" text="Más leidas"></Label>
+    <ListView row="0" col="0" class="list-group" [items]="moreNewsRead">
+      <ng-template let-nameMoreReadsNew="item">
+        <GridLayout rows="auto" columns="auto, *, auto">
+          <Image row="0" col="0" class="thumb img-circle" src="res://funcionalidad"></Image>
+          <Label row="0" col="1" class="list-group-item-heading" text="{{nameMoreReadsNew.title}}" verticalAligment="center"></Label>
+          <Button row="0" col="2" class="btn-favorite far" text="Volver a leer.."
+          (tap)="onNavItemTap('/list-favorites/read-details', nameMoreReadsNew)"></Button>
+        </GridLayout>
+      </ng-template>
+    </ListView>
+  </StackLayout>
 
+  <StackLayout [row]="moreNewsRead.length !== 0 ? 1 : 0" col="0">
+    <Label class="label-header-news" text="Últimas noticias"></Label>
+    <ListView class="list-group" [items]="resultData">
+      <ng-template let-nameNew="item">
+        <GridLayout rows="auto" columns="auto, *, auto">
+          <Image row="0" col="0" class="thumb img-circle" src="res://funcionalidad"></Image>
+          <Label row="0" col="1" class="list-group-item-heading" text="{{nameNew.title}}" verticalAligment="center"></Label>
+          <Button row="0" col="2" class="btn-favorite far" text="Leer más.."
+          (tap)="onNavItemTap('/list-favorites/read-details', nameNew)"></Button>
+        </GridLayout>
+      </ng-template>
+    </ListView>
+  </StackLayout>
+</GridLayout>
+
+<StackLayout>
+  
 </StackLayout>
 
 <ActivityIndicator #activityIndicator [busy]="showActivityIndicator" width="100" height="100" class="activity-indicator">
