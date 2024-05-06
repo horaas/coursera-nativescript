@@ -14,3 +14,4 @@ adb -s devicename disconnect
 npm i --save --force @ngrx/effects@13
 npm i --save --force @ngrx/store@13
  ```
+# el server se encuentra en la cartpeta express
