@@ -8,6 +8,9 @@ import {
 } from 'nativescript-ui-sidedrawer'
 import { filter } from 'rxjs/operators'
 import { Application, ApplicationSettings } from '@nativescript/core'
+import '@nativescript/firebase-messaging'
+import { firebase } from '@nativescript/firebase-core'
+import { AuthorizationStatus } from '@nativescript/firebase-messaging-core'
 
 @Component({
   selector: 'ns-app',
@@ -17,11 +20,11 @@ export class AppComponent implements OnInit {
   private _activatedUrl: string
   private _sideDrawerTransition: DrawerTransitionBase
   userName: string = ''
-  constructor(private router: Router, private routerExtensions: RouterExtensions) {
-    // Use the component constructor to inject services.
-  }
+
+  constructor(private router: Router, private routerExtensions: RouterExtensions) {}
 
   ngOnInit(): void {
+    this.requestUserPermission()
     this._activatedUrl = '/home'
     this._sideDrawerTransition = new SlideInOnTopTransition()
 
@@ -31,8 +34,6 @@ export class AppComponent implements OnInit {
         this._activatedUrl = event.urlAfterRedirects
         this.userName = ApplicationSettings.getString('userName') || 'sin Nombre'
       })
-
-      
   }
 
   get sideDrawerTransition(): DrawerTransitionBase {
@@ -52,5 +53,29 @@ export class AppComponent implements OnInit {
 
     const sideDrawer = <RadSideDrawer>Application.getRootView()
     sideDrawer.closeDrawer()
+  }
+
+  async requestUserPermission() {
+    const messaging = await firebase().messaging()
+
+    const authStatus = await messaging.requestPermission({
+      ios: {
+        alert: true,
+      },
+    })
+    const enabled =
+      authStatus === AuthorizationStatus.AUTHORIZED ||
+      authStatus === AuthorizationStatus.PROVISIONAL
+
+    if (enabled) {
+      console.log('Authorization status:', authStatus)
+
+      await messaging.registerDeviceForRemoteMessages()
+      const token = await messaging.getToken()
+      console.dir(token)
+      await messaging.onMessage(async (remoteMessage) => {
+        alert('A new FCM message arrived!' + JSON.stringify(remoteMessage))
+      })
+    }
   }
 }

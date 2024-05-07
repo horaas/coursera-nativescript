@@ -13,5 +13,9 @@ adb -s devicename disconnect
 
 npm i --save --force @ngrx/effects@13
 npm i --save --force @ngrx/store@13
+npm i @nativescript/google-maps 
+npm i @nativescript/firebase-core
+npm i @nativescript/firebase-messaging 
+
  ```
-# el server se encuentra en la cartpeta express
+# Se añde puntos 1-2 con la ultima version de fire base
