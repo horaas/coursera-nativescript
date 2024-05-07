@@ -11,6 +11,9 @@ import { Application, ApplicationSettings } from '@nativescript/core'
 import '@nativescript/firebase-messaging'
 import { firebase } from '@nativescript/firebase-core'
 import { AuthorizationStatus } from '@nativescript/firebase-messaging-core'
+import * as camera from "@nativescript/camera";
+import { ImageSource } from "@nativescript/core"
+import { shareImage } from '@nativescript/social-share'
 
 @Component({
   selector: 'ns-app',
@@ -78,5 +81,19 @@ export class AppComponent implements OnInit {
         alert('A new FCM message arrived!' + JSON.stringify(remoteMessage))
       })
     }
+  }
+
+  onCaptureImage() {
+    const options = {width: 300, height: 300, keepAspectRatio: false, saveToGallery: false}
+    camera.requestPermissions().then(() => {
+        camera.takePicture(options).then((dataImage) => {
+          ImageSource.fromAsset(dataImage).then((dataImage) => {
+            shareImage(dataImage)
+          })
+        })
+      },() => {
+          alert('debe proporcionar los permisos')
+      }
+  );
   }
 }
