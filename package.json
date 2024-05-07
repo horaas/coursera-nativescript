@@ -21,6 +21,7 @@
     "@nativescript/firebase-core": "^3.3.1",
     "@nativescript/firebase-messaging": "^3.3.1",
     "@nativescript/google-maps": "^1.7.1",
+    "@nativescript/social-share": "^2.3.0",
     "@nativescript/theme": "~3.0.2",
     "@nativescript/unit-test-runner": "^3.0.4",
     "@ngrx/effects": "^13.2.0",

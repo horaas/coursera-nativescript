@@ -1,9 +1,11 @@
 <ActionBar class="action-bar">
   <NavigationButton visibility="hidden"></NavigationButton>
-  <GridLayout columns="50, *">
-    <Label class="action-bar-title" text="Noticias" colSpan="2"></Label>
+  <GridLayout columns="auto, *, auto, auto">
+    <Label class="fas" col="0" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+    <Label class="action-bar-title" col="1" text="Noticias" colSpan="2"></Label>
 
-    <Label class="fas" text="&#xf0c9;" (tap)="onDrawerButtonTap()"></Label>
+    <Button class="fas button-shared" col="2" text="&#xf1e0;" (tap)="onButtonSharedText()" ios.position="right"></Button>
+    <Button class="fas button-shared" col="3" text="&#xf064;" (tap)="onButtonSharedImage()" ios.position="right"></Button>
   </GridLayout>
 </ActionBar>
 
@@ -13,18 +15,18 @@
     <ng-template let-nameNew="item">
       <GridLayout rows="auto" columns="auto, *, auto">
         <Image row="0" col="0" class="thumb img-circle" src="res://funcionalidad"></Image>
-        <Label row="0" col="1" class="list-group-item-heading" text="{{nameNew.title}}" verticalAligment="center"></Label>
-        <Button row="0" col="2" class="btn-favorite far"
-        *ngIf="!nameNew.isFavSelect"  text="&#xf005;"
-        (tap)="handleAddFavorite(nameNew)"></Button>
-        <Button row="0" col="2" class="btn-favorite fas" 
-        *ngIf="nameNew.isFavSelect" text="&#xf005;"
-        (tap)="handleAddFavorite(nameNew)"></Button>
+        <Label row="0" col="1" class="list-group-item-heading" text="{{nameNew.title}}"
+          verticalAligment="center"></Label>
+        <Button row="0" col="2" class="btn-favorite far" *ngIf="!nameNew.isFavSelect" text="&#xf005;"
+          (tap)="handleAddFavorite(nameNew)"></Button>
+        <Button row="0" col="2" class="btn-favorite fas" *ngIf="nameNew.isFavSelect" text="&#xf005;"
+          (tap)="handleAddFavorite(nameNew)"></Button>
       </GridLayout>
     </ng-template>
   </ListView>
 
 </StackLayout>
 
-<ActivityIndicator #activityIndicator [busy]="showActivityIndicator" width="100" height="100" class="activity-indicator">
+<ActivityIndicator #activityIndicator [busy]="showActivityIndicator" width="100" height="100"
+  class="activity-indicator">
 </ActivityIndicator>

@@ -1,10 +1,12 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core'
 import { RadSideDrawer } from 'nativescript-ui-sidedrawer'
-import { ActivityIndicator, Application, Color, View } from '@nativescript/core'
+import { ActivityIndicator, Application, Color, ImageAsset, View } from '@nativescript/core'
 import { FuncionalidadesService } from '../providers/funcionalidades.services'
 import { RouterExtensions } from '@nativescript/angular'
 import { NewsService } from '../providers/news.service'
 import * as Toast from 'nativescript-toast'
+import { shareImage, shareText } from '@nativescript/social-share'
+import { ImageSource } from "@nativescript/core"
 
 @Component({
   selector: 'List',
@@ -64,5 +66,14 @@ export class ListComponent implements OnInit {
       this.showActivityIndicator = false
       Toast.makeText("Error en la busqueda", 'long').show()
     })
+  }
+
+  onButtonSharedText() {
+    shareText('Prueba nuestra aplicacón del curso de Coursera')
+  }
+  async onButtonSharedImage() {
+    const assetsImage = new ImageAsset('~/assets/shared-image.jpg')
+    const imgToShare = await ImageSource.fromAsset(assetsImage); 
+    shareImage(imgToShare, {subject: 'prueba'})
   }
 }

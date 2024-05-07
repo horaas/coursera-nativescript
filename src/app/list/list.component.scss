@@ -2,6 +2,15 @@
     border-radius: 50%;
 }
 
+.button-shared {
+    border-radius: 30px;
+    box-shadow: 0 0 5px white;
+    font-size: 17px;
+    padding: 5px;
+    height: 30;
+    width: 30;
+    margin-right: 15px;
+}
 ListView {
     height: 100%;
     .btn-favorite {
