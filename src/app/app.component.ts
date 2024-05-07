@@ -57,6 +57,7 @@ export class AppComponent implements OnInit {
 
   async requestUserPermission() {
     const messaging = await firebase().messaging()
+    messaging.showNotificationsWhenInForeground = true
 
     const authStatus = await messaging.requestPermission({
       ios: {
