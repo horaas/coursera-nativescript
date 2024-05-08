@@ -38,5 +38,6 @@
 			</intent-filter>
 		</activity>
 		<activity android:name="com.tns.ErrorReportActivity"/>
+		 <meta-data android:name="com.google.android.geo.API_KEY" android:value="AIzaSyDhKKBgEetznjhnv4PNJfbAh7h2--n3Pnw" />
 	</application>
 </manifest>

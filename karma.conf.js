@@ -23,12 +23,24 @@ module.exports = function (config) {
     // available preprocessors: https://npmjs.org/browse/keyword/karma-preprocessor
     preprocessors: {
     },
-
+    // plugins : [
+    //   'karma-junit-reporter'
+    // ],
 
     // test results reporter to use
     // possible values: 'dots', 'progress'
     // available reporters: https://npmjs.org/browse/keyword/karma-reporter
-    reporters: ['progress'],
+    reporters: ['progress', 'junit'],
+
+    junitReporter: {
+      outputDir: process.env.JUNIT_REPORT_PATH || '../reporter',
+      outputFile: process.env.JUNIT_REPORT_NAME || 'reporter.xml',
+      suite: '',
+      useBrowserName: false,
+      nameFormatter: undefined, 
+      classNameFormatter: undefined,
+      properties: {}
+    },
 
     // configure optional coverage, enable via --env.codeCoverage
     coverageReporter: {

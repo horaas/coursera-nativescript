@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core'
 import { Routes } from '@angular/router'
 import { NativeScriptRouterModule } from '@nativescript/angular'
-
+import { MyLocationComponent } from './my-location/my-location.component'
 const routes: Routes = [
   { path: '', redirectTo: '/list', pathMatch: 'full' },
   {
@@ -35,6 +35,10 @@ const routes: Routes = [
   {
     path: 'list-favorites',
     loadChildren: () => import('~/app/favorites/favorites.module').then((m) => m.FavoritesModule),
+  },
+  {
+    path: 'my-location',
+    component: MyLocationComponent,
   }
 ]
 

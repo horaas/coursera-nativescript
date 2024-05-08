@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<testsuite name="NativeScript / 31 (12; M2010J19CG)" package="" timestamp="2024-05-08T20:46:27" id="0" hostname="arturo" tests="2" errors="0" failures="0" time="0.008">
+  <properties>
+    <property name="browser.fullName" value="NativeScript / 31 (12; M2010J19CG)"/>
+  </properties>
+  <testcase name="Pruebas a New state model debe tener el nombre del reportero de name" time="0.006" classname="Pruebas a New state model"/>
+  <testcase name="Pruebas a New state model el array debe ser mayor a 0" time="0.002" classname="Pruebas a New state model"/>
+  <system-out>
+    <![CDATA[
+]]>
+  </system-out>
+  <system-err/>
+</testsuite>

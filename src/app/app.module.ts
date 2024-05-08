@@ -9,6 +9,9 @@ import { NewsService } from './providers/news.service'
 import { ActionReducerMap, StoreModule as NgRxStoreModule} from '@ngrx/store'
 import { EffectsModule } from '@ngrx/effects'
 import { initializenews, LastNewsReadState, LastReadsEffects, reducerNewsData } from './favorites/news-state.model'
+import { GoogleMapsModule } from '@nativescript/google-maps/angular';
+
+
 export interface AppState {
   lasReadNews: LastNewsReadState
 }
